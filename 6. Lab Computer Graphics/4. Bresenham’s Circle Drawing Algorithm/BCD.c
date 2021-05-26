@@ -1,58 +1,42 @@
-#include <stdio.h>
-#include <conio.h>
+//To implement Bresenham’s Circle drawing algorithm.
 #include <graphics.h>
-
-void main()
+#include <conio.h>
+#include <stdio.h>
+int main()
 {
 	int gd = DETECT, gm;
-	int xc, yc, R;
-	detectgraph(&gd, &gm);
+	int d, r, x, y, xc, yc;
+	clrscr();
 	initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
-
-	printf("Enter the center of the circle:\n");
-	printf("Xc =");
+	printf("Enter Radius :");
+	scanf("%d", &r);
+	printf("\nEnter Center of circle :");
 	scanf("%d", &xc);
-	printf("Yc =");
-
 	scanf("%d", &yc);
-	printf("Enter the radius of the circle :");
-	scanf("%d", &R);
-	draw_circle(xc, yc, R);
-	getch();
-	closegraph();
-}
-void draw_circle(int xc, int yc, int rad)
-{
-	int x = 0;
-	int y = rad;
-	int p = 1 - rad;
-	symmetry(x, y, xc, yc);
-	for (x = 0; y > x; x++)
+	d = 3 - 2 * r;
+	x = 0;
+	y = r;
+	while (x <= y)
 	{
-		if (p < 0)
-			p += 2 * x + 3;
+		putpixel(xc + x, yc + y, 5);
+		putpixel(xc - y, yc - x, 5);
+		putpixel(xc + y, yc - x, 5);
+		putpixel(xc - y, yc + x, 5);
+		putpixel(xc + y, yc + x, 5);
+		putpixel(xc - x, yc - y, 5);
+		putpixel(xc + x, yc - y, 5);
+		putpixel(xc - x, yc + y, 5);
+		if (d <= 0)
+		{
+			d = d + 4 * x + 6;
+		}
 		else
 		{
-			p += 2 * (x - y) + 5;
-			y--;
+			d = d + 4 * x - 4 * y + 10;
+			y = y - 1;
 		}
-		symmetry(x, y, xc, yc);
-		delay(50);
+		x = x + 1;
 	}
-}
-void symmetry(int x, int y, int xc, int yc)
-{
-	putpixel(xc + x, yc - y, GREEN); //For pixel (x,y) delay(50);
-	putpixel(xc + y, yc - x, GREEN); //For pixel (y,x)
-
-	delay(50);
-	putpixel(xc + y, yc + x, GREEN); //For pixel (y,-x)
-
-	delay(50);
-	putpixel(xc + x, yc + y, GREEN); //For pixel (x,-y) delay(50);
-	putpixel(xc - x, yc + y, GREEN); //For pixel (-x,-y) delay(50);
-	putpixel(xc - y, yc + x, GREEN); //For pixel (-y,-x) delay(50);
-	putpixel(xc - y, yc - x, GREEN); //For pixel (-y,x) delay(50);
-	putpixel(xc - x, yc - y, GREEN); //For pixel (-x,y) delay(50);
-}
+	getch();
+	return 0;
 }
