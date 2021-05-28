@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
 	// We must be the parent
 	printf("I am the parent, waiting for child to end.\n");
 	sleep(10);
-	//doSomeWork("Parent");z
 
 	int status = 0;
 	pid_t childpid = wait(&status);

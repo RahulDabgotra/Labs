@@ -1,194 +1,68 @@
 #include <stdio.h>
-#include <stdlib.h>
-int processes[100][3], NP, quantum, scheduler[1000], WT[100];
-unsigned int time = 0;
-typedef struct el
-{
-    unsigned int p;
-    struct el *next;
-} Q;
-Q *qeue = NULL;
-void getSystem()
-{
-    int i;
-    printf("\nNumber of processes: ");
-    scanf("%d", &NP);
+#include <conio.h>
 
-    printf("\nThe Quantum: ");
-    scanf("%d", &quantum);
+void main()
+{
+    // initlialize the variable name
+    int i, NOP, sum = 0, count = 0, y, quant, wt = 0, tat = 0, at[10], bt[10], temp[10];
+    float avg_wt, avg_tat;
+    printf(" Total number of process in the system: ");
+    scanf("%d", &NOP);
+    y = NOP; // Assign the number of process to variable y
 
-    for (i = 0; i < NP; i++)
+    // Use for loop to enter the details of the process like Arrival time and the Burst Time
+    for (i = 0; i < NOP; i++)
     {
-        printf("\n Arrival Time of p%d: ", i);
-        scanf("%d", &processes[i][0]);
-        printf("\n Burst time for p%d: ", i);
-        scanf("%d", &processes[i][1]);
-        processes[i][2] = processes[i][1];
-        printf("\n-----------");
+        printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i + 1);
+        printf(" Arrival time is: \t"); // Accept arrival time
+        scanf("%d", &at[i]);
+        printf(" \nBurst time is: \t"); // Accept the Burst time
+        scanf("%d", &bt[i]);
+        temp[i] = bt[i]; // store the burst time in temp array
     }
-}
-void printSystem()
-{
-    int i;
-    printf("\n\t\tOur System is :");
-    printf("\nQuantum: %d", quantum);
-    printf("\nPi:  AT  BT RT");
-    for (i = 0; i < NP; i++)
+    // Accept the Time qunat
+    printf("Enter the Time Quantum for the process: \t");
+    scanf("%d", &quant);
+    // Display the process No, burst time, Turn Around Time and the waiting time
+    printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");
+    for (sum = 0, i = 0; y != 0;)
     {
-        printf("\nP%d:  %d  %d  %d", i, processes[i][0], processes[i][1], processes[i][2]);
-    }
-    printf("\nThe qeue: ");
-    Q *n;
-    for (n = qeue; n != NULL; n = n->next)
-    {
-        printf("P%d ", n->p);
-    }
-}
-unsigned int executionRemained()
-{
-    int i;
-    unsigned int x = 0;
-    for (i = 0; i < NP; i++)
-    {
-        if (processes[i][2] > 0)
+        if (temp[i] <= quant && temp[i] > 0) // define the conditions
         {
-            x = 1;
+            sum = sum + temp[i];
+            temp[i] = 0;
+            count = 1;
         }
-    }
-    return x;
-}
-void addToQeue(int i)
-{
-    Q *n, *n1;
-    n = (Q *)malloc(sizeof(Q));
-    n->next = NULL;
-    n->p = i;
-    if (qeue == NULL)
-    {
-
-        qeue = n;
-    }
-    else
-    {
-        for (n1 = qeue; n1->next != NULL; n1 = n1->next)
-            ;
-        n1->next = n;
-    }
-}
-void addArrivedProcessesToQeue()
-{
-    int i;
-    for (i = 0; i < NP; i++)
-    {
-        if (processes[i][0] == time)
+        else if (temp[i] > 0)
         {
-            addToQeue(i);
+            temp[i] = temp[i] - quant;
+            sum = sum + quant;
         }
-    }
-}
-unsigned int getNextProcess()
-{
-    Q *n;
-    int x;
-    if (qeue == NULL)
-    {
-        return -1;
-    }
-    else
-    {
-        x = qeue->p;
-        n = qeue;
-        qeue = qeue->next;
-        free(n);
-        return x;
-    }
-}
-void schedule()
-{
-    unsigned int np, toRun, q, i;
-    q = 0;
-    addArrivedProcessesToQeue();
-    while (executionRemained())
-    {
-        np = getNextProcess();
-        if (np == -1)
+        if (temp[i] == 0 && count == 1)
         {
-            /*
-			here if there is no process in waiting qeue
-			which mean the process get IDLe state.
-			here in this program we put -1 in scheduler[time]
-			which mean that the processor get IDLE in this time.
-			
-			*/
-            scheduler[time] = -1;
-            time++;
-            addArrivedProcessesToQeue();
+            y--; //decrement the process no.
+            printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i + 1, bt[i], sum - at[i], sum - at[i] - bt[i]);
+            wt = wt + sum - at[i] - bt[i];
+            tat = tat + sum - at[i];
+            count = 0;
+        }
+        if (i == NOP - 1)
+        {
+            i = 0;
+        }
+        else if (at[i + 1] <= sum)
+        {
+            i++;
         }
         else
         {
-            q = quantum;
-            if (processes[np][2] < q)
-            {
-                q = processes[np][2];
-            }
-            for (i = q; i > 0; i--)
-            {
-                scheduler[time] = np;
-                time++;
-                processes[np][2]--;
-                addArrivedProcessesToQeue();
-            }
-            if (processes[np][2] > 0)
-            {
-                addToQeue(np);
-            }
+            i = 0;
         }
-
-        printSystem();
-        int x;
     }
-}
-void printScheduling()
-{
-    int i;
-    printf("\n\nScheduling: \n");
-    for (i = 0; i < time; i++)
-    {
-        printf("[%d-%d] (P%d) \n", i, i + 1, scheduler[i]);
-    }
-    printf("\n\nWaiting Time: \n");
-    for (i = 0; i < NP; i++)
-    {
-        printf("\nP%d: %d", i, WT[i]);
-    }
-    //counting Average Waiting Time...
-    float AWT = 0.0;
-    for (i = 0; i < NP; i++)
-    {
-        AWT = AWT + WT[i];
-    }
-    AWT = AWT / NP;
-    printf("\n\nAverage Waiting Time: %f", AWT);
-}
-void WatingTime()
-{
-    int i;
-    unsigned int releaseTime, t;
-    for (i = 0; i < NP; i++)
-    {
-
-        for (t = time - 1; scheduler[t] != i; t--)
-            ;
-        releaseTime = t + 1;
-        WT[i] = releaseTime - processes[i][0] - processes[i][1];
-    }
-}
-
-main()
-{
-    getSystem();
-    printSystem();
-    schedule();
-    WatingTime();
-    printScheduling();
+    // represents the average waiting time and Turn Around time
+    avg_wt = wt * 1.0 / NOP;
+    avg_tat = tat * 1.0 / NOP;
+    printf("\n Average Turn Around Time: \t%f", avg_wt);
+    printf("\n Average Waiting Time: \t%f", avg_tat);
+    getch();
 }
