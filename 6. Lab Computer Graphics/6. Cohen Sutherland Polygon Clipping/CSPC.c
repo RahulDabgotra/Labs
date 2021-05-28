@@ -15,7 +15,7 @@ void main()
 	float x[8], y[8], m;
 	clrscr();
 	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+	initgraph(&gd, &gm, "C://TC//BGI");
 	printf("coordinates for rectangle : ");
 	scanf("%d%d%d%d", &rx1, &ry1, &rx2, &ry2);
 	printf("no. of sides for polygon : ");

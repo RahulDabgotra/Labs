@@ -10,7 +10,7 @@ void main()
 	int gd, gm = DETECT;
 	clrscr();
 	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, "C:\\TurboC3\\BGI");
+	initgraph(&gd, &gm, "C://TC//BGI");
 	rectangle(50, 50, 100, 100);
 	flood(55, 55, 9, 0);
 	getch();

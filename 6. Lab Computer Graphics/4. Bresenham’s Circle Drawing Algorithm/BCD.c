@@ -7,7 +7,7 @@ int main()
 	int gd = DETECT, gm;
 	int d, r, x, y, xc, yc;
 	clrscr();
-	initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+	initgraph(&gd, &gm, "C://TC//BGI");
 	printf("Enter Radius :");
 	scanf("%d", &r);
 	printf("\nEnter Center of circle :");

@@ -7,7 +7,7 @@ void main()
 	int gd = DETECT, gm;
 	int x2, x1, dx, dy, y1, y2, i, x, y, length;
 	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+	initgraph(&gd, &gm, "C://TC//BGI");
 	printf("Enter the coordinates of x1,y1,x2,y2 :");
 	scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
 	dx = x2 - x1;

@@ -27,7 +27,7 @@ void main()
 	printf("\nEnter x2 and y2\n");
 	scanf("%d %d", &p2.x, &p2.y);
 	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+	initgraph(&gd, &gm, "C://TC//BGI");
 	drawwindow();
 	delay(500);
 
