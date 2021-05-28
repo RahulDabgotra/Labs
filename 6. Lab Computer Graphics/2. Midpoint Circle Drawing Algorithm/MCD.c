@@ -6,15 +6,15 @@
 void main()
 {
 	float p;
-	int gd, gm, i, x, y, r, B;
+	int gd, gm, i, x, y, r;
 	clrscr();
 	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, "C://TURBOC3//BGI");
+	initgraph(&gd, &gm, "C://TC//BGI");
 	printf("Enter the radius of circle :");
 	scanf("%d", &r);
 	x = 0;
 	y = r;
-	B = 1.25 - r;
+	p = 1.25 - r;
 	do
 	{
 		putpixel(200 + x, 200 + y, 15);
@@ -34,11 +34,11 @@ void main()
 		else
 		{
 			x = x + 1;
-			y = y + 1;
+			y = y - 1;
 			p = p + 2 * (x - y) + 1;
 		}
+		delay(50);
 	} while (x < y);
-
 	getch();
 	closegraph();
 }
