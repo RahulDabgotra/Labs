@@ -7,10 +7,10 @@ int main()
 	int gd = DETECT, gm;
 	int d, r, x, y, xc, yc;
 	clrscr();
-	initgraph(&gd, &gm, "C://TC//BGI");
-	printf("Enter Radius :");
+	initgraph(&gd, &gm, "C:\\TC\\BGI");
+	printf("Enter the value of radius  :");
 	scanf("%d", &r);
-	printf("\nEnter Center of circle :");
+	printf("\nEnter the values of xc and yc :");
 	scanf("%d", &xc);
 	scanf("%d", &yc);
 	d = 3 - 2 * r;
