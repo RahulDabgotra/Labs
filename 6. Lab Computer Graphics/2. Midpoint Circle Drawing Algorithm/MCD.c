@@ -9,7 +9,7 @@ void main()
 	int gd, gm, i, x, y, r;
 	clrscr();
 	detectgraph(&gd, &gm);
-	initgraph(&gd, &gm, "C://TC//BGI");
+	initgraph(&gd, &gm, "C:\\TC\\BGI");
 	printf("Enter the radius of circle :");
 	scanf("%d", &r);
 	x = 0;
