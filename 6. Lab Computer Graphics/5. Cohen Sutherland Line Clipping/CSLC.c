@@ -25,42 +25,42 @@ void main()
 	detectgraph(&gd, &gm);
 	initgraph(&gd, &gm, "C:\\TC\\BGI");
 
-	printf("\n Enter x1 and y1 :\n");
+	printf("\nEnter x1 and y1 :\n");
 	scanf("%d %d", &p1.x, &p1.y);
-	printf("\n Enter x2 and y2 :\n");
+	printf("\nEnter x2 and y2 :\n");
 	scanf("%d %d", &p2.x, &p2.y);
 	drawwindow();
-	delay(100);
+	delay(500);
 
 	drawline(p1, p2);
-	delay(100);
+	delay(500);
 
 	p1 = setcode(p1);
 	p2 = setcode(p2);
 	v = visibility(p1, p2);
-	delay(100);
+	delay(500);
 
 	switch (v)
 	{
 	case 0:
 		drawwindow();
-		delay(100);
+		delay(500);
 		drawline(p1, p2);
 		break;
 	case 1:
 		drawwindow();
-		delay(100);
+		delay(500);
 		break;
 	case 2:
 		p3 = resetendpt(p1, p2);
 		p4 = resetendpt(p2, p1);
 		drawwindow();
-		delay(100);
+		delay(500);
 		drawline(p3, p4);
 		break;
 	}
 
-	delay(1000);
+	delay(5000);
 	closegraph();
 }
 
