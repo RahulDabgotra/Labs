@@ -7,7 +7,7 @@
 void main()
 {
     int gd, gm, i;
-    float x, y, x0, y0, x1, y1, dx, dy;
+    float x, y, x0, y0, x1, y1, dx, dy, p;
     clrscr();
     detectgraph(&gd, &gm);
     initgraph(&gd, &gm, "C:\\TC\\BGI");
