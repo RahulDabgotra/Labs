@@ -1,7 +1,7 @@
 <!-- To display the stacking of elements -->
 <html>
 
-<head>Stack Ordering
+<head>
     <title>Stack Ordering</title>
     <!-- Define styling properties -->
     <style type="text/css">
@@ -45,11 +45,12 @@
 
 <body>
     <script type=text/javascript> 
-    var topLayer="layer3" ; //function to place the choosen layer on the top 
-    function mover(toTop) 
+    var topLayer="layer3" ;  
+    function mover(toTop) //function to place the choosen layer on the top
     { 
         document.getElementById(topLayer).style.zIndex="0" ;
-        document.getElementById(toTop).style.zIndex="1" ; topLayer=toTop; 
+        document.getElementById(toTop).style.zIndex="1" ;
+        topLayer=toTop; 
     } 
     </script> 
     <p id=layer1 onMouseOver=mover('layer1');>This is the last layer</p>
