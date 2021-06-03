@@ -1,6 +1,4 @@
 #!C:\xampp\perl\bin\perl.exe
-# use CGI qw(: standard);
-# use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 print "content-type:text/html\n\n";
 print "<html>\n";
 print "<head> <title> About this server </title> </head>\n";
