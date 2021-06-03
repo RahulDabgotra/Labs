@@ -5,7 +5,8 @@ use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 $range = scalar (@coins);
 $random = int(rand($range));
 print header();
-print start_html(-title=>"Greetings",-bgcolor=>"#FFD800", -text=>"#800000"); print h1("Random Greetings");
+print start_html(-title=>"Greetings",-bgcolor=>"#FFD800", -text=>"#800000"); 
+print h1("Random Greetings");
 if(param)
 {
 $cmd=param("name");
