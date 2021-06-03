@@ -33,7 +33,8 @@
 
     if(isset($_COOKIE['lastVisit']))
     {
-        $visit = $_COOKIE['lastVisit']; echo "Last Visited on : ".$visit;
+        $visit = $_COOKIE['lastVisit']; 
+        echo "Last Visited on : ".$visit;
     } 
     else
     echo "You've got some old cookies!";
