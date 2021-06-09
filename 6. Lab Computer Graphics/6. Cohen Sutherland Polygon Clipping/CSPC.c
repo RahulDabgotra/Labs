@@ -30,7 +30,7 @@ void main()
 	outtextxy(10, 470, "Press any key....");
 	rectangle(rx1, ry1, rx2, ry2);
 	for (i = 0; i < n - 1; i++)
-		line(x[i], y[i], x[i + 1], y[i + 1]);
+	line(x[i], y[i], x[i + 1], y[i + 1]);
 	line(x[i], y[i], x[0], y[0]);
 	getch();
 	cleardevice();
