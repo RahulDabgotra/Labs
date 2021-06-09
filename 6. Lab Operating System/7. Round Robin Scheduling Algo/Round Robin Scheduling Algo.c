@@ -14,17 +14,17 @@ void main()
     for (i = 0; i < NOP; i++)
     {
         printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i + 1);
-        printf(" Arrival time is: \t"); // Accept arrival time
+        printf(" Arrival time is: "); // Accept arrival time
         scanf("%d", &at[i]);
-        printf(" \nBurst time is: \t"); // Accept the Burst time
+        printf(" Burst time is: "); // Accept the Burst time
         scanf("%d", &bt[i]);
         temp[i] = bt[i]; // store the burst time in temp array
     }
     // Accept the Time qunat
-    printf("Enter the Time Quantum for the process: \t");
+    printf("\n Enter the Time Quantum for the process: ");
     scanf("%d", &quant);
     // Display the process No, burst time, Turn Around Time and the waiting time
-    printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");
+    printf("\n Process No \t\t Burst Time \t\t\t TAT \t\t\t Waiting Time ");
     for (sum = 0, i = 0; y != 0;)
     {
         if (temp[i] <= quant && temp[i] > 0) // define the conditions
@@ -41,7 +41,7 @@ void main()
         if (temp[i] == 0 && count == 1)
         {
             y--; //decrement the process no.
-            printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i + 1, bt[i], sum - at[i], sum - at[i] - bt[i]);
+            printf("\n Process No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i + 1, bt[i], sum - at[i], sum - at[i] - bt[i]);
             wt = wt + sum - at[i] - bt[i];
             tat = tat + sum - at[i];
             count = 0;
@@ -62,7 +62,7 @@ void main()
     // represents the average waiting time and Turn Around time
     avg_wt = wt * 1.0 / NOP;
     avg_tat = tat * 1.0 / NOP;
-    printf("\n Average Turn Around Time: \t%f", avg_wt);
-    printf("\n Average Waiting Time: \t%f", avg_tat);
+    printf("\n Average Turn Around Time: %f", avg_wt);
+    printf("\n Average Waiting Time: %f", avg_tat);
     getch();
 }
