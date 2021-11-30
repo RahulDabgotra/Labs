@@ -7,12 +7,12 @@ void main()
     char plain[100], cipher[100];
     int key, i, length;
     int result;
-    printf("\n Enter the plain text: ");
+    printf("\n  Enter the Plain Text: ");
     scanf("%s", plain);
-    printf("\n Enter the key value: ");
+    printf("  Enter the Key Value: ");
     scanf("%d", &key);
     printf("\n \n \t PLAIN TEXT: %s", plain);
-    printf("\n \n \t ENCRYPTED TEXT:");
+    printf("\n \n \t ENCRYPTED TEXT: ");
     for (i = 0, length = strlen(plain); i < length; i++)
     {
         cipher[i] = plain[i] + key;
@@ -22,7 +22,7 @@ void main()
             cipher[i] = cipher[i] - 26;
         printf("%c", cipher[i]);
     }
-    printf("\n \n \t AFTER DECRYPTION :");
+    printf("\n \n \t AFTER DECRYPTION: ");
     for (i = 0; i < length; i++)
     {
         plain[i] = cipher[i] - key;
