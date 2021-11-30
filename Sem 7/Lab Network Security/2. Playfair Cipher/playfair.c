@@ -58,11 +58,11 @@ void main()
     char key[MX][MX], keyminus[25], keystr[10], str[25] = {0};
     char
         alpa[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-    clrscr();
+    // clrscr();
 
-    printf("\n Enter key: ");
+    printf("\nEnter key: ");
     gets(keystr);
-    printf("\n Enter the plain text: ");
+    printf("\nEnter the plain text: ");
     gets(str);
     n = strlen(keystr);
     //convert the characters to uppertext
@@ -119,7 +119,7 @@ void main()
         }
         printf("\n");
     }
-    printf("\n\n Entered text : %s\n Cipher Text : ", str);
+    printf("\n\nEntered Text : %s\nCipher Text  : ", str);
     for (i = 0; i < strlen(str); i++)
     {
         if (str[i] == 'J')
