@@ -29,7 +29,6 @@ void playfair(char ch1, char ch2, char key[MX][MX])
         }
     }
 
-    //printf("%d%d %d%d",w,x,y,z);
     if (w == y)
     {
         x = (x + 1) % 5;
@@ -60,7 +59,7 @@ void main()
         alpa[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
     // clrscr();
 
-    printf("\nEnter key: ");
+    printf("Enter key: ");
     gets(keystr);
     printf("\nEnter the plain text: ");
     gets(str);
